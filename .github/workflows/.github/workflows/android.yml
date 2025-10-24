@@ -21,10 +21,11 @@ jobs:
     - name: Set up Android SDK
       uses: android-actions/setup-android@v3
 
-    - name: Build APK
-      run: |
-        chmod +x gradlew
-        ./gradlew assembleDebug
+    - name: Install Gradle
+      uses: gradle/gradle-build-action@v2
+
+    - name: Build with Gradle
+      run: gradle assembleDebug
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
